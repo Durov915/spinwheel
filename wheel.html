@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spinning Image</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 3rem;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      position: relative;
+    }
+
+    .img {
+      height: 300px;
+      width: 300px;
+      border-radius: 50%;
+      background-image: url(https://www.pngall.com/wp-content/uploads/10/Spinning-Wheel-Vector-No-Background.png);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      animation: rotate linear infinite;
+    }
+
+    img {
+      height: 35px;
+      transform: rotate(180deg);
+      position: absolute;
+      top: 41%;
+      left: 50%;
+      transform: translate(-50%, 141%);
+      mix-blend-mode: color-burn;
+    }
+
+    input[type="range"] {
+      width: 200px;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="img" id="img"></div>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK9dukLct_VoqKzCEmY_z7PJgMwRVYn0Gac34kITj7VJnmKhY7NkYFo8kMyH0N93kD5ZA&usqp=CAU" alt="" />
+  </div>
+  <input type="range" min="0" max="360" value="0" oninput="spin(this.value)" id="range" />
+  <button id="spinbtn" onclick="spin2()">Spin</button>
+
+  <script>
+    let img = document.getElementById("img");
+    
+    function spin(deg) {
+      img.style.transform = `rotate(${deg}deg)`;
+    }
+
+    function spin2() {
+      let randomnumber = Math.floor(Math.random() * 3600 + 1); 
+      img.style.transition = "10s";
+      img.style.transform = `rotate(${randomnumber}deg)`;
+    }
+  </script>
+</body>
+</html>
